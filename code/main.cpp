@@ -77,7 +77,22 @@ int main(int argc, char* argv[])
 
         system("nmcli networking off");
         std::cout << "Disconnected\n";
-        std::this_thread::sleep_for(std::chrono::seconds(seconds));
+
+        for (int i = 0; i <= seconds - 1; i++)
+        {
+            // this check is here to be grammatically correct
+            if (seconds - i == 1)
+            {
+                std::cout << (seconds - i) << " second left...\n";
+            }
+            else
+            {
+                std::cout << (seconds - i) << " seconds left...\n";
+            }
+
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+
         std::cout << "Connecting...\n";
         system("nmcli networking on");
         std::cout << "Connected!\n";
